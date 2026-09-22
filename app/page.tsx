@@ -8,7 +8,6 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Sparkles,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionTitle from "@/components/SectionTitle";
@@ -18,7 +17,7 @@ const experience = [
     company: "84.51°",
     role: "Data Science Intern",
     period: "May 2026 — Aug 2026",
-    image: "/images/84_51_logo.jpg",
+    image: "/images/84.51_logo.png",
     bullets: [
       "Built a reusable Optuna-based hyperparameter optimization framework for Kroger search-ranking models.",
       "Improved ranking quality by 1% and conversion by 0.5%, corresponding to an estimated $60M in incremental annual revenue.",
@@ -49,7 +48,7 @@ const projects = [
     description:
       "Built a product recommendation system using SVD-based collaborative filtering to model user-product preferences from explicit ratings. Achieved F1 0.852, precision 0.837, and recall 0.868.",
     tags: ["Python", "SVD", "Scikit-learn", "TensorFlow", "PyTorch"],
-    href: "file:///C:/Users/gauta/Downloads/Recommendation_system_Gautam_Rao_Full_Code_%20(2).html",
+    href: "/projects/amazon-recommendation-system.html",
   },
   {
     title: "ExtraaLearn Lead Conversion",
@@ -104,12 +103,11 @@ export default function Home() {
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="#courses">Courses</a>
-            <a href="#skills">Toolkit</a>
+            <a href="#skills">Skills</a>
             <a href="#about">Who I am</a>
           </div>
-          <a className="resume-pill" href="/gautam_rao_real_resume_.pdf" target="_blank" rel="noreferrer">
-            Resume <Download size={15} />
+          <a className="resume-pill" href="/gautam_rao_real_resume_.pdf" target="_blank" rel="noreferrer" aria-label="Download resume">
+            <Download size={15} /> <span>Resume</span>
           </a>
         </div>
       </nav>
@@ -117,15 +115,6 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-grid">
           <div>
-            <motion.div
-              className="status-pill"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
-            >
-              <Sparkles size={14} /> Machine Learning · Data Science · Scientific Computing
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -140,7 +129,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.12 }}
             >
-              I’m focused on modeling, optimization, and translating complex data into measurable business impact. I’m pursuing an M.S. in Scientific Machine Learning at UT Austin and have hands-on experience in search ranking, predictive analytics, large-scale data systems, and production ML for industry problems.
+              I’m focused on Data Science and Machine Learning Modeling, optimization, and translating complex data into measurable business impact.
             </motion.p>
 
             <motion.div
@@ -150,6 +139,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <a className="primary-btn" href="#experience">Explore my work <ArrowUpRight size={17} /></a>
+              <a className="secondary-btn" href="/gautam_rao_real_resume_.pdf" target="_blank" rel="noreferrer">Download resume <Download size={16} /></a>
               <a className="icon-btn" href="https://github.com/grao23" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
               <a className="icon-btn" href="https://www.linkedin.com/in/gautamrao25/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
               <a className="icon-btn" href="mailto:gautam.r.rao@gmail.com" aria-label="Email"><Mail size={19} /></a>
@@ -167,7 +157,7 @@ export default function Home() {
               <div className="portrait-overlay">
                 <div><MapPin size={14} /> Austin, TX</div>
                 <strong>UT Austin</strong>
-                <span>Computational Engineering</span>
+                <span>Scientific Machine Learning</span>
               </div>
             </div>
           </motion.div>
@@ -178,13 +168,13 @@ export default function Home() {
         <SectionTitle
           index="01"
           title="Experience"
-          description="Machine learning and data systems applied to ranking, aerospace, reliability, and decision-making."
+          description="Data Science and Machine Learning Modeling, optimization, and translating complex data into measurable business impact."
         />
         <div className="experience-stack">
           {experience.map((item, i) => (
             <Reveal key={item.company} delay={i * 0.08}>
               <article className="experience-card">
-                <div className={`experience-media ${item.company === "Collins Aerospace" ? "contain-logo" : ""}`}>
+                <div className={`experience-media ${item.company === "Collins Aerospace" || item.company === "84.51°" ? "contain-logo" : ""} ${item.company === "84.51°" ? "purple-logo" : ""}`}>
                   <img src={item.image} alt={item.company} />
                 </div>
                 <div className="experience-content">
@@ -252,36 +242,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="courses" className="section-wrap">
-        <SectionTitle
-          index="04"
-          title="Courses"
-          description="Coursework that shaped my foundation in machine learning, mathematics, and statistics."
-        />
-        <div className="skills-grid">
-          <Reveal>
-            <div className="skill-card">
-              <h3>Predictive Machine Learning</h3>
-              <p>Supervised learning, model evaluation, feature engineering, and predictive modeling.</p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <div className="skill-card">
-              <h3>Mathematics in Deep Learning</h3>
-              <p>Mathematical foundations for optimization, neural networks, and modern deep learning.</p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <div className="skill-card">
-              <h3>Statistical Methods</h3>
-              <p>Statistical reasoning, inference, experimentation, and data-driven decision-making.</p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       <section className="section-wrap alt-bg" id="skills">
-        <SectionTitle index="05" title="Toolkit" />
+        <SectionTitle index="04" title="Skills" />
         <div className="skills-grid">
           {skills.map(([name, detail], i) => (
             <Reveal key={name} delay={(i % 3) * 0.04}>
@@ -303,9 +265,9 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.08}>
             <div>
-              <SectionTitle index="06" title="Who I am" />
+              <SectionTitle index="05" title="Who I am" />
               <div className="about-copy">
-                <p>I am a prospective Data Scientist and Machine Learning Engineer focused on big data handling, modeling, optimization, and translating complex data into measurable business impact. I developed these skills through coursework in Predictive Machine Learning, Mathematics in Deep Learning, and Statistical Methods, which strengthened my foundation in data-driven decision-making and modern ML techniques.</p>
+                <p>I am a prospective Data Scientist and Machine Learning Engineer focused on Big Data handling, Modeling, Optimization, and translating complex data into measurable business impact. I developed these skills through coursework in Predictive Machine Learning, Mathematics in Deep Learning, and Statistical Methods, which strengthened my foundation in data-driven decision-making and modern ML techniques.</p>
                 <p>Outside of school and work, I enjoy staying active through sports, especially cricket, and I love spending time with my friends. I also spend a lot of time watching movies and TV shows, and I’m a big fan of  Game of Thrones, Attack on Titan, The Bear, and Jujutsu Kaisen.</p>
                 <p>I also run a TikTok channel called WicketTalk, where I talk about cricket and everything around the sport. It’s a fun way for me to combine my interests with my love for the game.</p>
               </div>
